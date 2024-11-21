@@ -1,15 +1,18 @@
 CHIP DecoderSegment201837629 {
     IN A, B, C, D;
-    OUT g;
+    OUT g, debug_term1, debug_term2, debug_term3;
 
     PARTS:
-    Not(in=B, out=NotB);
-    Not(in=D, out=NotD);
+    // Step 1: Negate inputs
+    NOT(in=B, out=NotB);
+    NOT(in=D, out=NotD);
 
-    And(a=NotB, b=NotD, out=term1);
-    And(a=A, b=C, out=term2);
-    And(a=B, b=D, out=term3);
+    // Step 2: Compute intermediate terms
+    AND(a=NotB, b=NotD, out=debug_term1);
+    AND(a=A, b=C, out=debug_term2);
+    AND(a=B, b=D, out=debug_term3);
 
-    Or(a=term1, b=term2, out=partial);
-    Or(a=partial, b=term3, out=g);
-} 
+    // Step 3: Combine intermediate terms to produce output
+    OR(a=debug_term1, b=debug_term2, out=partial);
+    OR(a=partial, b=debug_term3, out=g);
+}
