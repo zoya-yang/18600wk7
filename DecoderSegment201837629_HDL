@@ -1,0 +1,14 @@
+CHIP DecoderSegment201837629 {
+    IN A, B, C, D;
+    OUT g;
+
+    PARTS:
+     g = NOT(B) AND NOT(D) OR (A AND C) OR (B AND D)
+    NOT(in=B, out=notB);
+    NOT(in=D, out=notD);
+    AND(a=notB, b=notD, out=term1);
+    AND(a=A, b=C, out=term2);
+    AND(a=B, b=D, out=term3);
+    OR(a=term1, b=term2, out=partial);
+    OR(a=partial, b=term3, out=g);
+}
