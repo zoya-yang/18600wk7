@@ -6,8 +6,9 @@ CHIP DecoderSegment201837629 {
      
     Not(in=B, out=NotB);
     Not(in=D, out=NotD);
-    And(a=notB, b=NotD, out=term1);
+    And(a=NotB, b=NotD, out=term1);
     And(a=A, b=C, out=term2);
     And(a=B, b=D, out=term3);
     Or(a=term1, b=term2, out=partial);
     Or(a=partial, b=term3, out=g);
+} 
