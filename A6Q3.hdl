@@ -1,3 +1,4 @@
+CHIP Decoder8 {
 IN A,B,C,D;
     OUT a,b,c,d,e,f,g;
 
@@ -124,3 +125,4 @@ IN A,B,C,D;
     And(a=pavan1, b=pavan2, out=pavan5);
     And(a=pavan3, b=pavan4, out=pavan6);
     And(a=pavan5, b=pavan6, out=g);
+}
