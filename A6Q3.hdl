@@ -1,4 +1,4 @@
-CHIP A6Q3 Decoder8 {
+CHIP A6Q3 Decoder8{
     IN A,B,C,D;
     OUT a,b,c,d,e,f,g;
 
