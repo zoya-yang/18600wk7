@@ -1,7 +1,6 @@
-CHIP A6Q3 Decoder8{
-    IN A,B,C,D;
-    OUT a,b,c,d,e,f,g;
-
+CHIP A6Q3 Decoder8  // Missing {
+    IN A, B, C, D;
+    OUT a, b, c, d, e, f, g;
     PARTS:
 
     Not(in=B, out=notB1);
