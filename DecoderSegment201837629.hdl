@@ -1,18 +1,24 @@
-CHIP DecoderSegment201837629 {
-    IN A, B, C, D;
-    OUT g, debug_term1, debug_term2, debug_term3;
+CHIP LogicCircuit {
+    IN A, B, C, D;   // 4 input variables
+    OUT f;           // Output of the logic circuit
 
     PARTS:
-    // Step 1: Negate inputs
-    NOT(in=B, out=NotB);
-    NOT(in=D, out=NotD);
+    // NOT gates
+    Not(in=A, out=NotA);
+    Not(in=B, out=NotB);
+    Not(in=C, out=NotC);
+    Not(in=D, out=NotD);
 
-    // Step 2: Compute intermediate terms
-    AND(a=NotB, b=NotD, out=debug_term1);
-    AND(a=A, b=C, out=debug_term2);
-    AND(a=B, b=D, out=debug_term3);
+    // AND gates for each term
+    And(a=NotA, b=C, out=Term1);       // A'C
+    And(a=B, b=C, out=Term2);          // BC
+    And(a=NotB, b=NotD, out=Term3);    // B'D'
+    And(a=A, b=NotB, c=NotC, out=Term4); // AB'C'
+    And(a=NotA, b=B, c=D, out=Term5);  // A'BD
+    And(a=A, b=NotC, c=NotD, out=Term6); // AC'D'
 
-    // Step 3: Combine intermediate terms to produce output
-    OR(a=debug_term1, b=debug_term2, out=partial);
-    OR(a=partial, b=debug_term3, out=g);
+    // OR gate to combine all terms
+    Or(a=Term1, b=Term2, c=Term3, out=Partial1);
+    Or(a=Term4, b=Term5, c=Term6, out=Partial2);
+    Or(a=Partial1, b=Partial2, out=f); // Final output
 }
