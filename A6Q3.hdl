@@ -1,0 +1,126 @@
+IN A,B,C,D;
+    OUT a,b,c,d,e,f,g;
+
+    PARTS:
+
+    Not(in=B, out=notB1);
+    Not(in=C, out=notC1);
+    Not(in=D, out=notD1);
+    Not(in=A, out=NotA1);
+    Or(a=A, b=notB1, out=chair1);
+    Or(a=chair1, b=C, out=chair2);
+    Or(a=chair2, b=notD1, out=desk1);
+   
+    Or(a=NotA1, b=notB1, out=pen1);
+    Or(a=pen1, b=D, out=desk3);
+
+    Or(a=NotA1, b=notD1, out=wheel1);
+    Or(a=wheel1, b=notC1, out=desk4);
+
+    Or(a=notB1, b=notC1, out=paper1);
+    Or(a=paper1, b=D, out=desk5);
+
+    And(a=desk1, b=desk3, out=lecture1);
+    And(a=lecture1, b=desk4, out=lecture2);
+    And(a=lecture2, b=desk5, out=lecture3);
+    And(a=lecture3, b=desk5, out=a);
+
+
+    Not(in=A, out=notA2);
+    Not(in=B,out=notB2);
+    Not(in=C,out=notC2);
+    Not(in=D,out=notD2);
+    And(a=notC2, b=notD2, out=term12);
+    And(a=notA2, b=B, out=terma2);
+    And(a=terma2, b=notC2, out=term22);
+    And(a=A, b=notB2, out=term32);
+    And(a=A, b=C, out=term42);
+    And(a=B, b=C, out=termb2);
+    And(a=termb2, b=notD2, out=term52);
+    Or(a=term12,b=term22,out=or12);
+    Or(a=or12,b=term32,out=or22);
+    Or(a=or22,b=term42,out=or32);
+    Or(a=or32,b=term52,out=b);
+
+    Not(in=A, out=NotA);
+    Not(in=B, out=NotB);
+    Not(in=C, out=NotC);
+    Not(in=D, out=NotD);
+    Or(a=A, b=NotB, out=potato1);
+    Or(a=potato1, b=C, out=potato2);
+    Or(a=potato2, b=D, out=petal1);
+    Or(a=A, b=B, out=carrot1);
+    Or(a=carrot1, b=C, out=carrot2);
+    Or(a=carrot2, b=NotD, out=petal2);
+    Or(a=NotB, b=NotC, out=corn1);
+    Or(a=corn1, b=NotD, out=petal3);
+    Or(a=NotA, b=B, out=toma1);
+    Or(a=toma1, b=NotC, out=tom2);
+    Or(a=tom2, b=D, out=petal4);
+    And(a=petal1, b=petal2, out=valorant1);
+    And(a=valorant1, b=petal3, out=valorant2);
+    And(a=valorant2, b=petal4, out=c);
+
+    Not(in=A, out=nota4);
+    Not(in=B, out=notb4);
+    Not(in=C, out=notc4);
+    Not(in=D, out=notd4);
+    And(a=nota4, b=notc4, out=temp14);
+    And(a=temp14, b=notd4, out=gate1);
+    And(a=nota4, b=C, out=temp24);
+    And(a=temp24, b=D, out=gate2);
+    And(a=notc4, b=D, out=gate3);
+    And(a=nota4, b=B, out=gate4);
+    And(a=A, b=notb4, out=gate5);
+    Or(a=gate1, b=gate2, out=o1);
+    Or(a=gate3, b=gate4, out=o2);
+    Or(a=o1, b=o2, out=o1ando2);
+    Or(a=gate5, b=o1ando2, out=d);
+
+    Not(in=A, out=nota5);
+    Not(in=B, out=notb5);
+    Not(in=D, out=notd5);
+    Not(in=C, out=notc5);
+    And(a=C, b=notd5, out=tree1);
+    And(a=A, b=D, out=tree2);
+    And(a=A, b=notb5, out=tree3);
+    And(a=nota5, b=notb5, out=bark1);
+    And(a=bark1, b=C, out=tree5);
+    And(a=nota5, b=B, out=leaf1);
+    And(a=leaf1, b=notc5, out=tree4);
+
+    Or(a=tree1, b=tree2, out=fruit1);
+    Or(a=fruit1, b=tree3, out=fruit2);
+    Or(a=fruit2, b=tree4, out=fruit3);
+    Or(a=fruit3, b=tree5, out=e);
+
+
+    Not(in=B, out=notB6);
+    Not(in=D, out=notD6);
+    Or(a=A, b=notD6, out=AorNotD);
+    Or(a=A, b=notB6, out=AornotB);
+    Or(a=AornotB, b=C, out=AornotBorC);
+    Or(a=C, b=notD6, out=CornotD);
+    Or(a=CornotD, b=B, out=CornotDorB);
+    And(a=AorNotD, b=AornotBorC, out=firand);
+    And(a=firand, b=CornotDorB, out=f);
+
+    Not(in=A, out=notaria);
+    Not(in=B, out=notbria);
+    Not(in=C, out=notcria);
+    Not(in=D, out=notdria);
+    Or(a=A, b=B, out=apples);
+    Or(a=C, b=notdria, out=apples1);
+    Or(a=apples, b=apples1, out=pavan1);
+    Or(a=A, b=notbria, out=grapes);
+    Or(a=C, b=D, out=grapes1);
+    Or(a=grapes, b=grapes1, out=pavan2);
+    Or(a=notaria, b=notbria, out=oranges);
+    Or(a=C, b=notdria, out=oranges1);
+    Or(a=oranges, b=oranges1, out=pavan3);
+    Or(a=notaria, b=B, out=pears);
+    Or(a=notcria, b=notdria, out=pears1);
+    Or(a=pears, b=pears1, out=pavan4);
+    And(a=pavan1, b=pavan2, out=pavan5);
+    And(a=pavan3, b=pavan4, out=pavan6);
+    And(a=pavan5, b=pavan6, out=g);
