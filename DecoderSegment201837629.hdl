@@ -10,15 +10,22 @@ CHIP DecoderSegment201837629 {
     Not(in=D, out=NotD);
 
     // AND gates for each term in the Boolean expression
-    And(a=NotA, b=C, out=Term1);        // A'C
-    And(a=B, b=C, out=Term2);           // BC
-    And(a=NotB, b=NotD, out=Term3);     // B'D'
-    And(a=A, b=NotB, c=NotC, out=Term4);// AB'C'
-    And(a=NotA, b=B, c=D, out=Term5);   // A'BD
-    And(a=A, b=NotC, c=NotD, out=Term6);// AC'D'
+    And(a=NotA, b=C, out=Term1);         // A'C
+    And(a=B, b=C, out=Term2);            // BC
+    And(a=NotB, b=NotD, out=Term3);      // B'D'
+    
+    // For three-input AND gates, use two AND gates
+    And(a=A, b=NotB, out=Intermediate1); // A and NotB
+    And(a=Intermediate1, b=NotC, out=Term4); // AB'C'
+    
+    And(a=NotA, b=B, out=Intermediate2); // A' and B
+    And(a=Intermediate2, b=D, out=Term5); // A'BD
+
+    And(a=A, b=NotC, out=Intermediate3); // A and NotC
+    And(a=Intermediate3, b=NotD, out=Term6); // AC'D'
 
     // OR gates to combine all terms
-    Or(a=Term1, b=Term2, c=Term3, out=Partial1);  // First group of OR
-    Or(a=Term4, b=Term5, c=Term6, out=Partial2);  // Second group of OR
+    Or(a=Term1, b=Term2, c=Term3, out=Partial1);  // First OR group
+    Or(a=Term4, b=Term5, c=Term6, out=Partial2);  // Second OR group
     Or(a=Partial1, b=Partial2, out=g);            // Final output g
 }
