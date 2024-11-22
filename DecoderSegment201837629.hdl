@@ -1,4 +1,4 @@
-CHIP DecoderSegment {
+CHIP DecoderSegment201837629 {
     IN A, B, C, D;  // Inputs: 4-bit binary
     OUT g;          // Output: segment g
 
