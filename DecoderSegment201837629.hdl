@@ -24,8 +24,10 @@ CHIP DecoderSegment201837629 {
     And(a=A, b=NotC, out=Intermediate3); // A and NotC
     And(a=Intermediate3, b=NotD, out=Term6); // AC'D'
 
-    // OR gates to combine all terms
-    Or(a=Term1, b=Term2, c=Term3, out=Partial1);  // First OR group
-    Or(a=Term4, b=Term5, c=Term6, out=Partial2);  // Second OR group
-    Or(a=Partial1, b=Partial2, out=g);            // Final output g
+    // OR gates to combine terms (chain for more than 2 inputs)
+    Or(a=Term1, b=Term2, out=Partial1);       // Combine Term1 and Term2
+    Or(a=Partial1, b=Term3, out=Partial2);    // Combine Partial1 and Term3
+    Or(a=Term4, b=Term5, out=Partial3);       // Combine Term4 and Term5
+    Or(a=Partial3, b=Term6, out=Partial4);    // Combine Partial3 and Term6
+    Or(a=Partial2, b=Partial4, out=g);        // Final output g
 }
