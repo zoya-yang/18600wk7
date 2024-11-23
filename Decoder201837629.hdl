@@ -25,7 +25,6 @@ CHIP Decoder201837629 {
     And(a=lecture1, b=desk4, out=lecture2);
     And(a=lecture2, b=desk5, out=lecture3);
     And(a=lecture3, b=desk5, out=a);
-}
 
 
     Not(in=A, out=notA2);
@@ -126,3 +125,4 @@ CHIP Decoder201837629 {
     And(a=pavan1, b=pavan2, out=pavan5);
     And(a=pavan3, b=pavan4, out=pavan6);
     And(a=pavan5, b=pavan6, out=g);
+}
