@@ -25,6 +25,7 @@ CHIP Decoder201837629 {
     And(a=lecture1, b=desk4, out=lecture2);
     And(a=lecture2, b=desk5, out=lecture3);
     And(a=lecture3, b=desk5, out=a);
+}
 
 
     Not(in=A, out=notA2);
